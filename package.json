@@ -1,5 +1,5 @@
 {
-  "name": "utility-styles",
+  "name": "@frontkom/utility-styles",
   "version": "1.0.0",
   "description": "SCSS utilities for base styling",
   "main": "index.scss",
