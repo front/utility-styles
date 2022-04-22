@@ -1,0 +1,130 @@
+@use 'colors' as *;
+@use 'scales' as *;
+
+// Utility map
+$utility-config: (
+  'text': (
+    property: 'font-size',
+    values: $type-scale,
+  ),
+  'font': (
+    property: 'font-family',
+    values: (
+      sans: "'Work Sans', sans-serif",
+      serif: 'serif',
+    ),
+  ),
+  'bg': (
+    property: 'background-color',
+    values: $base-color,
+  ),
+  'color': (
+    property: 'color',
+    values: $base-color,
+  ),
+  'weight': (
+    property: 'font-weight',
+    values: (
+      light: 300,
+      regular: 400,
+      bold: 600,
+    ),
+  ),
+  'text-align': (
+    property: 'text-align',
+    values: (
+      left: 'left',
+      center: 'center',
+      right: 'right',
+    ),
+  ),
+  'line-height': (
+    property: 'line-height',
+    values: (
+      default: 1.2,
+      0: 0,
+      1: 1,
+      tight: 1.2,
+      snug: 1.35,
+      loose: 1.5,
+    ),
+  ),
+  'letter-spacing': (
+    property: 'letter-spacing',
+    values: (
+      tight: '-0.025em',
+      normal: '0em',
+      wide: '0.025em',
+    ),
+  ),
+  'float': (
+    property: 'float',
+    values: (
+      left: 'left',
+      right: 'right',
+    ),
+  ),
+  'm': (
+    property: 'margin',
+    values: $space-scale,
+  ),
+  'mt': (
+    property: 'margin-top',
+    values: $space-scale,
+  ),
+  'mr': (
+    property: 'margin-right',
+    values: $space-scale,
+  ),
+  'mb': (
+    property: 'margin-bottom',
+    values: $space-scale,
+  ),
+  'ml': (
+    property: 'margin-left',
+    values: $space-scale,
+  ),
+  '-mt': (
+    property: 'margin-top',
+    values: $negative-space-scale,
+  ),
+  '-mr': (
+    property: 'margin-right',
+    values: $negative-space-scale,
+  ),
+  '-mb': (
+    property: 'margin-bottom',
+    values: $negative-space-scale,
+  ),
+  '-ml': (
+    property: 'margin-left',
+    values: $negative-space-scale,
+  ),
+  'p': (
+    property: 'padding',
+    values: $space-scale,
+  ),
+  'pt': (
+    property: 'padding-top',
+    values: $space-scale,
+  ),
+  'pr': (
+    property: 'padding-right',
+    values: $space-scale,
+  ),
+  'pb': (
+    property: 'padding-bottom',
+    values: $space-scale,
+  ),
+  'pl': (
+    property: 'padding-left',
+    values: $space-scale,
+  ),
+  'shadow': (
+    property: 'box-shadow',
+    values: (
+      pull-1: '-10px -10px 30px -10px rgba(255,255,255,0.5), 10px 10px 30px -5px rgba(0,0,0,0.2)',
+      pull-2: '-12px -12px 40px -12px rgba(255,255,255,0.3), 12px 12px 45px -8px rgba(0,0,0,0.2)',
+    ),
+  ),
+) !default;

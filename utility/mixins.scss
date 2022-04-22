@@ -1,0 +1,84 @@
+@use 'sass:map';
+
+@use 'config';
+@use 'functions' as fn;
+@use 'media-queries' as mq;
+
+// Mixins
+@mixin apply-utility($key, $value-key) {
+  $values: fn.get-config-value(config.$utility-config, $key, $value-key);
+
+  @if ($values) {
+    #{map-get($values, 'property')}: map-get($values, 'value');
+  }
+}
+// Example usage
+// @debug apply-utility(text, 'md');
+
+// TODO: Document mixin
+@mixin focus($type: '') {
+  @if $type == 'sass' or $type == 'scss' {
+    @at-root .keydown-tab #{&}:focus {
+      @content;
+    }
+  } @else if $type == 'modules' {
+    :global(.keydown-tab) &:focus {
+      @content;
+    }
+  } @else {
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Generate utility classes
+///
+@mixin generateUtilityClasses {
+  @each $utility, $map in config.$utility-config {
+    $property: map-get($map, 'property');
+    $prefix: $utility;
+    $values: map-get($map, 'values');
+    $placeholder-only: map-get($map, 'placeholder-only');
+
+    @each $k, $v in $values {
+      // @debug $k, $v;
+      @if ($k == 'default') {
+        @if (not $placeholder-only) {
+          .#{$prefix} {
+            #{$property}: #{$v};
+          }
+        }
+        %#{$prefix} {
+          #{$property}: #{$v};
+        }
+      } @else {
+        @if (not $placeholder-only) {
+          .#{$prefix}-#{$k} {
+            #{$property}: #{$v};
+          }
+        }
+        %#{$prefix}-#{$k} {
+          #{$property}: #{$v};
+        }
+      }
+    }
+  }
+}
+
+/// Media query
+/// @param {string!} $arg - Valid media query as a string or key from $mq-map.
+/// @param {map} $mq-map [$base-media-queries] - Map of media queries.
+/// @require "sass:map";
+///
+@mixin media-query($arg, $mq-map: mq.$base-media-queries) {
+  @if map.has-key($mq-map, $arg) {
+    @media #{map-get(mq.$base-media-queries, #{$arg})} {
+      @content;
+    }
+  } @else {
+    @media #{$arg} {
+      @content;
+    }
+  }
+}

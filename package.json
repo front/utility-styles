@@ -1,0 +1,19 @@
+{
+  "name": "utility-styles",
+  "version": "1.0.0",
+  "description": "SCSS utilities for base styling",
+  "main": "index.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/front/utility-styles.git"
+  },
+  "bugs": {
+    "url": "https://github.com/front/utility-styles/issues"
+  },
+  "homepage": "https://github.com/front/utility-styles#readme"
+}

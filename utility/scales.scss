@@ -1,0 +1,50 @@
+@use 'function-scale' as fn;
+
+$type-scale: (
+  default: fn.scale-calc(0),
+  xs: fn.scale-calc(-2),
+  sm: fn.scale-calc(-1),
+  md: fn.scale-calc(0),
+  lg: fn.scale-calc(1),
+  xl: fn.scale-calc(3),
+  2xl: fn.scale-calc(5),
+) !default;
+
+$space-scale: (
+  default: fn.scale-calc(0),
+  3xs: fn.scale-calc(-8),
+  2xs: fn.scale-calc(-6),
+  xs: fn.scale-calc(-3),
+  sm: fn.scale-calc(-1),
+  md: fn.scale-calc(0),
+  lg: fn.scale-calc(1),
+  xl: fn.scale-calc(3),
+  2xl: fn.scale-calc(5),
+  3xl: fn.scale-calc(7),
+  column: fn.scale-calc(3),
+  gap: fn.scale-calc(5),
+  0: 0,
+) !default;
+
+$negative-space-scale: (
+  default: fn.scale-calc(0, true),
+  3xs: fn.scale-calc(-8, true),
+  2xs: fn.scale-calc(-6, true),
+  xs: fn.scale-calc(-3, true),
+  sm: fn.scale-calc(-1, true),
+  md: fn.scale-calc(0, true),
+  lg: fn.scale-calc(1, true),
+  xl: fn.scale-calc(3, true),
+  2xl: fn.scale-calc(5, true),
+  3xl: fn.scale-calc(7, true),
+  column: fn.scale-calc(3, true),
+  gap: fn.scale-calc(5, true),
+) !default;
+
+$icon-scale: (
+  default: fn.scale-calc(1),
+  xs: fn.scale-calc(-1),
+  sm: fn.scale-calc(0),
+  md: fn.scale-calc(1),
+  lg: fn.scale-calc(2),
+) !default;

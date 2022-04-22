@@ -1,0 +1,88 @@
+@use 'colors';
+@use 'config';
+@use 'scales';
+
+/// Get Color
+/// Grab the color of $base-colors map.
+/// Default to 'primary' if no key is provided.
+///
+/// @param {string} $key - The color utility’s key
+///
+@function get-color-value($key: 'primary') {
+  @if (not map-has-key(colors.$base-color, $key)) {
+    @warn #{'Color ‘' + $key + '’ doesn’t exist'};
+    @return false;
+  }
+  @return map-get(colors.$base-color, $key);
+}
+// Test `get-color-value` function
+// @debug get-color-value();
+// @debug get-color-value("secondary");
+
+/// Grab the property and value of one of the $utility-config
+/// that the generator will generate a class for.
+///
+/// @param {string} $key - The configured utility’s key
+/// @param {string} $value-key - The value key that you are looking for within the utilty
+///
+@function get-config-value($util-map, $key, $value-key) {
+  @if (not map-has-key($util-map, $key)) {
+    @warn #{'Utility ‘' + $key + '’ doesn’t exist'};
+    @return false;
+  }
+  $utility: map-get($util-map, $key);
+  $property: map-get($utility, 'property');
+  $values: map-get($utility, 'values');
+  $value: map-get($values, $value-key);
+
+  @if ($property and $value) {
+    @return (property: #{$property}, value: #{$value});
+  } @else {
+    @if ($property) {
+      @warn #{'Value: ‘' + $value-key + '’ doesn’t exist in ‘' + $key + '’' };
+    }
+
+    // @if ($value) {
+    //   @warn #{'Utility ‘' + $key + '’ doesn’t exist'};
+    // }
+
+    @return false;
+  }
+}
+
+// Test `get-config-value` function
+// @debug get-config-value(config.$utility-config, "text", "md");
+
+/// Get utility value
+/// Grab the color of $base-colors map.
+///
+/// @param {string} $utitlity - The utility name
+/// @param {string} $key-value - The utility's key
+///
+@function get-utility-value($utility, $key-value) {
+  $prop-value-map: get-config-value(config.$utility-config, $utility, $key-value);
+  @if (not $prop-value-map) {
+    @return false;
+  }
+  @return map-get($prop-value-map, 'value');
+}
+// Test `get-utility-value` function
+// @debug get-utility-value(text, "xl");
+// @debug get-utility-value("line-height", "tight");
+
+/// Get Color
+/// Grab the color of $base-colors map.
+/// Default to 'default' if no key is provided.
+///
+/// @param {string} $key - The color utility’s key
+///
+@function get-size-value($key: 'default') {
+  @if (not map-has-key(scales.$space-scale, $key)) {
+    @warn #{'Size ‘' + $key + '’ doesn’t exist'};
+    @return false;
+  }
+  @return map-get(scales.$space-scale, $key);
+}
+// Test `get-size-value` function
+// @debug get-size-value();
+// @debug get-size-value("lg");

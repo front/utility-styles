@@ -1,0 +1,4 @@
+@function scale-calc($step, $negative: false) {
+  $prefix: if($negative, '-', '');
+  @return calc(#{$prefix}1rem * pow(var(--scale), #{$step}));
+}

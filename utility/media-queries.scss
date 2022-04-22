@@ -1,0 +1,10 @@
+@use 'sass:map';
+
+$base-media-queries: (
+  sm: '(min-width: 23.4375em)',
+  max-sm: '(max-width: 23.375em)',
+  md: '(min-width: 48.75em)',
+  max-md: '(max-width: 48.6875em)',
+  lg: '(min-width: 90em)',
+  max-lg: '(max-width: 89.9375em)',
+) !default;
